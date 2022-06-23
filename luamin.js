@@ -123,9 +123,11 @@
 	var identifierMap;
 	var identifiersInUse;
 	var generateIdentifier = function(originalName) {
-		// Preserve `self` in methods
-		if (originalName == 'self') {
-			return originalName;
+		switch(originalName) {
+			// Preserve `self` in methods
+			case('self'):
+			case('_'):
+				return originalName;
 		}
 
 		if (hasOwnProperty.call(identifierMap, originalName)) {
